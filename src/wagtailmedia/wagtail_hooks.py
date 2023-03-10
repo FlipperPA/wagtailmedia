@@ -17,6 +17,7 @@ from wagtailmedia import admin_urls
 from wagtailmedia.forms import GroupMediaPermissionFormSet
 from wagtailmedia.models import get_media_model
 from wagtailmedia.permissions import permission_policy
+from wagtailmedia.views.viewsets import media_chooser_viewset
 
 
 @hooks.register("register_admin_urls")
@@ -124,3 +125,8 @@ def add_media_comparison_css():
         '<link rel="stylesheet" href="{}">',
         versioned_static("wagtailmedia/css/wagtailmedia-comparison.css"),
     )
+
+
+@hooks.register("register_admin_viewset")
+def register_viewset():
+    return media_chooser_viewset
